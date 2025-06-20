@@ -1,0 +1,94 @@
+.menu{
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo{
+    height: 40px;
+    margin-left: 2rem;
+    transform: scaleX(1.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--header-footer);
+    color: var(--text-white);
+    text-transform: uppercase;
+    font-size: var(--average-font);
+    padding: 5px 10px;
+    font-weight: 500;
+    line-height: .9;
+    user-select: none;
+    
+}
+
+span{
+    font-size: 15px;
+    letter-spacing: 2px;
+}
+
+.navbar{
+    display: flex;
+    gap: 1rem;
+    font-weight: 500;
+    color: var(--text);
+    text-transform: uppercase;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar a{
+    padding: 1rem;
+    border-radius: 10px;
+    transition: .1s;
+}
+
+.navbar a:hover{
+    padding: 1rem;
+    background-color: var(--header-footer);
+    color: var(--text-white);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+
+.dropdown-menu {
+    display: none;
+    position: relative;
+    width: 100%;
+    position: absolute;
+    max-width: 150px;
+    z-index: 1;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.dropdown-menu a {
+    display: block;
+    color: black;
+    max-width: fit-content;
+
+}
+
+.dropdown:hover .dropdown-menu{
+    display: block;
+    color: var(--text-white);
+    background-color: var(--header-footer);
+}
+
+.selectBg {
+  padding: 1rem;
+  border-radius: 10px;
+  transition: .1s;
+  cursor: default;
+  pointer-events: none;
+}
+
+.dropdown:hover .selectBg {
+    color: var(--text-white);
+    background-color: var(--header-footer);
+}
+
