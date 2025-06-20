@@ -1,0 +1,10 @@
+:root{
+    --bg: #FFFFFF;
+    --text:#333333;
+    --foucus:#007BFF;
+        
+    --big-font: 3rem;
+    --average-font: 1.7rem;
+
+    --header-footer: #1F1F1F;
+}
