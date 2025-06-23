@@ -1,12 +1,17 @@
 .menu{
     display: flex;
     justify-content: space-between;
+    position: relative;
+    height: 3.5rem;
+}
+header {
+    margin-bottom: 0;
 }
 
 .logo{
-    height: 40px;
+    height: 100%;
     margin-left: 2rem;
-    transform: scaleX(1.6);
+    transform: scaleX(1.64);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,7 +20,7 @@
     color: var(--text-white);
     text-transform: uppercase;
     font-size: var(--average-font);
-    padding: 5px 10px;
+    padding: 0 10px;
     font-weight: 500;
     line-height: .9;
     user-select: none;
@@ -68,7 +73,7 @@ span{
 
 .dropdown-menu a {
     display: block;
-    color: black;
+    color: rgb(189, 181, 181);
     max-width: fit-content;
 
 }

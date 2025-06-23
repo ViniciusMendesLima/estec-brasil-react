@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./css/navbar.css";
 const Navbar = () => {
   return (
-    <section className="section menu">
+    <header className="section menu">
       <div className="logo">
         <p>estec</p>
         <span>brasil</span>
@@ -21,7 +21,7 @@ const Navbar = () => {
         <Link to="/contact">Contato</Link>
         <Link to="/orders">Pedidos</Link>
       </nav>
-    </section>
+    </header>
   );
 };
 
