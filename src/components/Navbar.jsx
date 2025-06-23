@@ -17,7 +17,15 @@ const Navbar = () => {
           <Link to="/about/values">Valores</Link>
         </div>
       </div>
-        <Link to="/products">Produtos</Link>
+      <div className="dropdown">
+        <Link className="selectBg" to="/products">Produtos</Link>
+        <div className="dropdown-menu">
+          <Link to="/products/tables">Mesas</Link>
+          <Link to="/products/chairs">Cadeiras</Link>
+          <Link to="/products/miscellaneous">Diversos</Link>
+        </div>
+
+      </div>
         <Link to="/contact">Contato</Link>
         <Link to="/orders">Pedidos</Link>
       </nav>

@@ -8,6 +8,9 @@ import { Orders } from "./Orders";
 import { History } from "./History";
 import { Mission } from "./Mission";
 import { Values } from "./Values";
+import { Tables } from "./Tables";
+import { Chairs } from "./Chairs"; 
+import { Miscellaneous } from "./Miscellaneous"; 
 
 
 const AppRoutes = () => {
@@ -21,6 +24,9 @@ const AppRoutes = () => {
           <Route path="/about/mission" element={<Mission />}/>
           <Route path="/about/values" element={<Values />}/>
           <Route path="/products" element={<Products />}/>
+          <Route path="/products/tables" element={<Tables />}/>
+          <Route path="/products/chairs" element={<Chairs />}/>
+          <Route path="/products/miscellaneous" element={<Miscellaneous />}/>
           <Route path="/contact" element={<Contact />}/>
           <Route path="/orders" element={<Orders />}/>
         </Route>
