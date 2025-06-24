@@ -12,8 +12,8 @@ const Navbar = () => {
       <div className="dropdown">
         <Link className="selectBg" to="/about">A Empresa</Link>
         <div className="dropdown-menu">
-          <Link to="/about/history">História</Link>
           <Link to="/about/mission">Missão</Link>
+          <Link to="/about/vision">Visão</Link>
           <Link to="/about/values">Valores</Link>
         </div>
       </div>

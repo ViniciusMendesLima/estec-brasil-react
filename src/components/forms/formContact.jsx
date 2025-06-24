@@ -54,8 +54,14 @@ const Form = () => {
         <textarea
           name="contactMessage"
           id="contactMessage"
+          rows={6}
+          cols={50}
           placeholder="Digite sue texto aqui..."
         ></textarea>
+        <div className="btns">
+          <button className="btn-send">Enviar</button>
+          <button className="btn-clean">Limpar</button>
+        </div>
       </form>
     </>
   );

@@ -17,7 +17,25 @@ html{
     align-items: center;
     width: 100%;
     height: 4rem;
-    color: var(--text-white);
+    color: var(--text-2);
     text-transform: uppercase;
 }
+.contentAbout{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+}
+.aboutImage, .aboutInformation{
+    max-width: 30rem;
+}
 
+.aboutInformation h2{
+    margin-bottom: 1rem;
+    font-size: 3rem;
+}
+
+.aboutInformation p {
+    font-size: 20px;
+    line-height: 2.5rem;
+}

@@ -17,7 +17,7 @@ header {
     justify-content: center;
     align-items: center;
     background-color: var(--header-footer);
-    color: var(--text-white);
+    color: var(--text-2);
     text-transform: uppercase;
     font-size: var(--average-font);
     padding: 0 10px;
@@ -51,7 +51,7 @@ span{
 .navbar a:hover{
     padding: 1rem;
     background-color: var(--header-footer);
-    color: var(--text-white);
+    color: var(--text-2);
 }
 
 .dropdown {
@@ -80,7 +80,7 @@ span{
 
 .dropdown:hover .dropdown-menu{
     display: block;
-    color: var(--text-white);
+    color: var(--text-2);
     background-color: var(--header-footer);
 }
 
@@ -93,7 +93,7 @@ span{
 }
 
 .dropdown:hover .selectBg {
-    color: var(--text-white);
+    color: var(--text-2);
     background-color: var(--header-footer);
 }
 

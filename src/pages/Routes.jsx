@@ -5,7 +5,7 @@ import { About } from "./About";
 import { Products } from "./Products";
 import { Contact } from "./Contact";
 import { Orders } from "./Orders";
-import { History } from "./History";
+import { Vision } from "./Vision";
 import { Mission } from "./Mission";
 import { Values } from "./Values";
 import { Tables } from "./Tables";
@@ -19,11 +19,11 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />}/>
-          <Route path="/about" element={<About />}/>
-          <Route path="/about/history" element={<History />}/>
+          {/* <Route path="/about" element={<About />}/> */}
           <Route path="/about/mission" element={<Mission />}/>
+          <Route path="/about/vision" element={<Vision />}/>
           <Route path="/about/values" element={<Values />}/>
-          <Route path="/products" element={<Products />}/>
+          {/* <Route path="/products" element={<Products />}/> */}
           <Route path="/products/tables" element={<Tables />}/>
           <Route path="/products/chairs" element={<Chairs />}/>
           <Route path="/products/miscellaneous" element={<Miscellaneous />}/>
