@@ -3,6 +3,13 @@ html {
   color: var(--text);
 }
 
+.greet{
+  position: absolute;
+  right:  0;
+  top: -20px;
+
+}
+
 .content {
   display: flex;
   flex-direction: column;
