@@ -1,8 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./Home";
-import { SharedLayout } from "./SharedLayout";
-import { About } from "./About";
-import { Products } from "./Products";
+import { SharedLayout } from "../components/layout/SharedLayout"
 import { Contact } from "./Contact";
 import { Orders } from "./Orders";
 import { Vision } from "./Vision";
@@ -19,11 +17,9 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />}/>
-          {/* <Route path="/about" element={<About />}/> */}
           <Route path="/about/mission" element={<Mission />}/>
           <Route path="/about/vision" element={<Vision />}/>
           <Route path="/about/values" element={<Values />}/>
-          {/* <Route path="/products" element={<Products />}/> */}
           <Route path="/products/tables" element={<Tables />}/>
           <Route path="/products/chairs" element={<Chairs />}/>
           <Route path="/products/miscellaneous" element={<Miscellaneous />}/>

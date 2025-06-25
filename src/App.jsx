@@ -1,7 +1,7 @@
 import { AppRoutes } from "./pages/Routes"
 import './index.css'
-import './pages/css/all.css'
-import './pages/css/variables.css'
+import './pages/styles/all.css'
+import './pages/styles/variables.css'
 
 function App() {
   return (

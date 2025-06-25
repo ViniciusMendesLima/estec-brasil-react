@@ -39,3 +39,33 @@ html{
     font-size: 20px;
     line-height: 2.5rem;
 }
+
+.products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 20px;
+    max-width: 50rem;
+}
+
+.product{
+    max-width: 220px;
+}
+
+.product img{
+    height: 220px;
+    width: 220px;
+    border-radius: 10px;
+}
+
+.homePage h1{
+    font-size: 4rem;
+    margin-top: 2rem;
+    color: var(--header-footer);
+}
+
+.homePage h4{
+    margin: 1rem 0 2rem;
+}
+

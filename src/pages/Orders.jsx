@@ -1,5 +1,5 @@
 import { Form } from "../components/forms/formOrder";
-import "../components/css/form.css"
+import "../components/styles/form.css"
 
 const Orders = () => {
   return (
