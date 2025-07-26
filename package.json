@@ -10,8 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "cpf-cnpj-validator": "^1.0.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-hook-form": "^7.58.1",
+    "react-input-mask": "^2.0.4",
     "react-router-dom": "^6.30.1"
   },
   "devDependencies": {
