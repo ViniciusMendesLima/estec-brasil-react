@@ -7,6 +7,7 @@ const Form = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm();
   
   const products = SearchProducts();
@@ -26,6 +27,19 @@ const Form = () => {
       total = items.reduce((sum, item) => sum + (item.total || 0), 0);
     
     return total
+  }
+
+  function clean(){
+    reset();
+    setItems([
+      {
+      productIndex: "",
+      description: "",
+      price: "",
+      quantity: 1,
+      total: 0,
+    },
+    ])
   }
 
   const handleProductChange = (index, e) => {
@@ -248,7 +262,7 @@ const Form = () => {
         <button className="btn-send" onClick={() => handleSubmit(onSubmits)()}>
           Enviar Pedido
         </button>
-        <button className="btn-clean">Limpar</button>
+        <button className="btn-clean" onClick={clean}>Limpar</button>
       </div>
     </div>
   );
