@@ -58,27 +58,29 @@ textarea {
   resize: none;
 }
 
-.btns{
+.btns {
   margin: 10px 0 30px;
   text-transform: uppercase;
 }
-.btn-send, .btn-clean{
+.btn-send,
+.btn-clean {
   text-transform: uppercase;
   cursor: pointer;
   border-radius: 5px;
 }
-.btn-send:hover, .btn-clean:hover{
-  opacity: .8;
+.btn-send:hover,
+.btn-clean:hover {
+  opacity: 0.8;
 }
-.btn-send{
+.btn-send {
   margin-right: 10px;
   padding: 3px 40px;
   background-color: var(--foucus);
   color: var(--text-2);
-  font-weight:600;
+  font-weight: 600;
   border: 1px solid var(--foucus);
 }
-.btn-clean{
+.btn-clean {
   padding: 3px 20px;
   border: 1px solid gray;
 }
@@ -96,64 +98,56 @@ textarea {
   max-width: 17rem;
 }
 
-.OrderFormProducts table{
-    width: 100%;
-    /* table-layout: fixed; */
+.OrderFormProducts table {
+  width: 100%;
+  border-spacing: 0 5px;
 }
-th{
-    
+th {
   white-space: nowrap;
 }
 
-.OrderFormProducts{
-    margin-top: 10px;
+.OrderFormProducts {
+  margin-top: 10px;
 }
 .OrderFormProducts td {
-    padding: 5px; 
-    max-width: 100%;
-
+  padding: 0 5px;
 }
 
-.selectOrderProduct td {
-  padding: 8px;
+.selectOrderProduct td input {
+  width: 100%;
 }
 
-.selectOrderProduct td input{
-    width: 100%;
-    height: 30px;
-
-}
-
-.remProduct, .addProduct{
+.remProduct,
+.addProduct {
   height: 30px;
   padding: 0 4px;
   border-radius: 4px;
   border: 1px solid #ccc;
   cursor: pointer;
-  transition: .3s;
+  transition: 0.3s;
 }
 
-.remProduct:hover, .addProduct:hover{
+.remProduct:hover,
+.addProduct:hover {
   background-color: #c7c3c3;
 }
 
- .remProduct {
-  margin: 8px 0;
+.remProduct {
   width: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.addProduct{
+.addProduct {
   margin-left: 8px;
 }
 
-.selectOrderProductTotalValue{
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    font-weight: 700;
-    margin-top: 10px;
-    gap: 5px;
+.selectOrderProductTotalValue {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  font-weight: 700;
+  margin-top: 10px;
+  gap: 5px;
 }

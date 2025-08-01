@@ -8,6 +8,7 @@ const Form = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  
   const products = SearchProducts();
 
   const [items, setItems] = useState([
@@ -111,7 +112,7 @@ const Form = () => {
             type="number"
             id="enterprise"
             name="enterprise"
-            {...register("enterprise")}
+            {...register("enterprise", { required: true })}
           />
         </div>
 
@@ -121,13 +122,13 @@ const Form = () => {
             type="text"
             id="adress"
             name="adress"
-            {...register("adress")}
+            {...register("adress", { required: true })}
           />
         </div>
 
         <div>
           <label htmlFor="city">Cidade:</label>
-          <input type="text" id="city" name="city" {...register("city")} />
+          <input type="text" id="city" name="city" {...register("city", { required: true })} />
         </div>
 
         <div className="uf">
@@ -138,7 +139,7 @@ const Form = () => {
             id="state"
             name="state"
             placeholder="UF"
-            {...register("state")}
+            {...register("state", { required: true })}
           >
             <option></option>
             <option>AC</option>
@@ -172,7 +173,7 @@ const Form = () => {
         </div>
         <div>
           <label htmlFor="phone">Telefone:</label>
-          <input type="number" id="phone" name="phone" {...register("phone")} />
+          <input type="number" id="phone" name="phone" {...register("phone", { required: true })} />
         </div>
 
         <div>
@@ -227,18 +228,20 @@ const Form = () => {
                 <td>
                   <input
                     type="number"
-                    value={(item.quantity * item.price).toFixed(2)}
+                    value={(item.quantity * item.price).toFixed(2)} readOnly
                   />
                 </td>
+                <td>
                 <button className="remProduct" type="button" onClick={() => removeItem(index)}>-</button>
+                </td>
               </tr>
             ))}
-            <button className="addProduct" type="button" onClick={addNewItem}>Adicionar Produto</button>
           </tbody>
         </table>
+            <button className="addProduct" type="button" onClick={addNewItem}>Adicionar Produto</button>
         <div className="selectOrderProductTotalValue">
           <label>Valor Total Pedido</label>
-          <input type="number" value={orderTotal().toFixed(2)} />
+          <input type="number" value={orderTotal().toFixed(2)} readOnly />
         </div>
       </div>
       <div className="btns">
