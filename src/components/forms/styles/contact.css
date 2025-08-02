@@ -1,0 +1,18 @@
+.firstSelect {
+  font-weight: 600;
+}
+
+.howFind {
+  margin-top: 10px;
+}
+
+.radioGrop div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.radioGrop div label {
+  margin-top: 0;
+  font-weight: 100;
+}

@@ -1,0 +1,71 @@
+.clientAdress {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.clientAdress div {
+  display: flex;
+  flex-direction: column;
+}
+
+.clientAdress input {
+  max-width: 17rem;
+}
+
+.OrderFormProducts {
+  margin-top: 10px;
+}
+
+.OrderFormProducts table {
+  width: 100%;
+  border-spacing: 0 5px;
+}
+
+.OrderFormProducts td {
+  padding: 0 5px;
+}
+
+th {
+  white-space: nowrap;
+}
+
+.selectOrderProduct td input {
+  width: 100%;
+}
+
+.remProduct,
+.addProduct {
+  height: 30px;
+  padding: 0 4px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.remProduct:hover,
+.addProduct:hover {
+  background-color: #c7c3c3;
+}
+
+.remProduct {
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addProduct {
+  margin-left: 8px;
+}
+
+.selectOrderProductTotalValue {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  font-weight: 700;
+  margin-top: 10px;
+  gap: 5px;
+}
