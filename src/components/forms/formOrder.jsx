@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import SearchProducts from "../../utils/SearchProducts";
 import { useState } from "react";
-import "./styles/order.css"
+import "./styles/order.css";
 import { ErrorMessage } from "../Error";
 
 const Form = () => {
@@ -9,9 +9,9 @@ const Form = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
   } = useForm();
-  
+
   const products = SearchProducts();
 
   const [items, setItems] = useState([
@@ -24,24 +24,24 @@ const Form = () => {
     },
   ]);
 
-  function orderTotal(){
-    let total = 0
-      total = items.reduce((sum, item) => sum + (item.total || 0), 0);
-    
-    return total
+  function orderTotal() {
+    let total = 0;
+    total = items.reduce((sum, item) => sum + (item.total || 0), 0);
+
+    return total;
   }
 
-  function clean(){
+  function clean() {
     reset();
     setItems([
       {
-      productIndex: "",
-      description: "",
-      price: "",
-      quantity: 1,
-      total: 0,
-    },
-    ])
+        productIndex: "",
+        description: "",
+        price: "",
+        quantity: 1,
+        total: 0,
+      },
+    ]);
   }
 
   const handleProductChange = (index, e) => {
@@ -60,7 +60,7 @@ const Form = () => {
           ? product.price * Number(updatedItems[index].quantity)
           : 0,
     };
-    orderTotal()
+    orderTotal();
     setItems(updatedItems);
   };
 
@@ -73,7 +73,7 @@ const Form = () => {
 
   const removeItem = (index) => {
     const newItems = items.filter((_, i) => i !== index);
-    orderTotal()
+    orderTotal();
     setItems(newItems);
   };
 
@@ -95,6 +95,8 @@ const Form = () => {
 
   const onSubmits = (data) => {
     console.log(data);
+    alert("Pedido enviada");
+    clean();
   };
 
   return (
@@ -144,7 +146,12 @@ const Form = () => {
 
         <div>
           <label htmlFor="city">Cidade:</label>
-          <input type="text" id="city" name="city" {...register("city", { required: true })} />
+          <input
+            type="text"
+            id="city"
+            name="city"
+            {...register("city", { required: true })}
+          />
           <ErrorMessage error={errors.city} fieldName="Cidade" />
         </div>
 
@@ -191,7 +198,12 @@ const Form = () => {
         </div>
         <div>
           <label htmlFor="phone">Telefone:</label>
-          <input type="number" id="phone" name="phone" {...register("phone", { required: true })} />
+          <input
+            type="number"
+            id="phone"
+            name="phone"
+            {...register("phone", { required: true })}
+          />
           <ErrorMessage error={errors.phone} fieldName="Telefone" />
         </div>
 
@@ -248,17 +260,26 @@ const Form = () => {
                 <td>
                   <input
                     type="number"
-                    value={(item.quantity * item.price).toFixed(2)} readOnly
+                    value={(item.quantity * item.price).toFixed(2)}
+                    readOnly
                   />
                 </td>
                 <td>
-                <button className="remProduct" type="button" onClick={() => removeItem(index)}>-</button>
+                  <button
+                    className="remProduct"
+                    type="button"
+                    onClick={() => removeItem(index)}
+                  >
+                    -
+                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-            <button className="addProduct" type="button" onClick={addNewItem}>Adicionar Produto</button>
+        <button className="addProduct" type="button" onClick={addNewItem}>
+          Adicionar Produto
+        </button>
         <div className="selectOrderProductTotalValue">
           <label>Valor Total Pedido</label>
           <input type="number" value={orderTotal().toFixed(2)} readOnly />
@@ -268,7 +289,9 @@ const Form = () => {
         <button className="btn-send" onClick={() => handleSubmit(onSubmits)()}>
           Enviar Pedido
         </button>
-        <button className="btn-clean" onClick={clean}>Limpar</button>
+        <button className="btn-clean" onClick={clean}>
+          Limpar
+        </button>
       </div>
     </div>
   );
