@@ -6,6 +6,11 @@
   max-width: 40rem;
 }
 
+.error{
+  font-size: 9px;
+  color: #ff0000;
+}
+
 input {
   background-color: var(--formbg-tela-input);
   border: 1px solid gray;

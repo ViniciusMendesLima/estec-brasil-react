@@ -91,6 +91,16 @@ const Form = () => {
     setItems(updatedItems);
   };
 
+  const ErrorMessage = ({ error , fieldName}) => {
+  if (!error) return null;
+
+  if (error.type === "required") {
+    return <p className="error">{fieldName} é obrigatório</p>;
+  }
+
+  return null;
+};
+
   const onSubmits = (data) => {
     console.log(data);
   };
@@ -115,9 +125,7 @@ const Form = () => {
             name="client"
             {...register("client", { required: true })}
           />
-          {errors?.name?.type == "required" && (
-            <p>{errors?.name}Nome e obrigatorio</p>
-          )}
+          <ErrorMessage error={errors.client} fieldName="Nome do Cliente" />
         </div>
 
         <div>
@@ -128,6 +136,7 @@ const Form = () => {
             name="enterprise"
             {...register("enterprise", { required: true })}
           />
+          <ErrorMessage error={errors.enterprise} fieldName="CNPJ" />
         </div>
 
         <div>
@@ -138,11 +147,13 @@ const Form = () => {
             name="adress"
             {...register("adress", { required: true })}
           />
+          <ErrorMessage error={errors.adress} fieldName="Endereço" />
         </div>
 
         <div>
           <label htmlFor="city">Cidade:</label>
           <input type="text" id="city" name="city" {...register("city", { required: true })} />
+          <ErrorMessage error={errors.city} fieldName="Cidade" />
         </div>
 
         <div className="uf">
@@ -184,15 +195,18 @@ const Form = () => {
             <option>SE</option>
             <option>TO</option>
           </select>
+          <ErrorMessage error={errors.state} fieldName="Estado" />
         </div>
         <div>
           <label htmlFor="phone">Telefone:</label>
           <input type="number" id="phone" name="phone" {...register("phone", { required: true })} />
+          <ErrorMessage error={errors.phone} fieldName="Telefone" />
         </div>
 
         <div>
           <label htmlFor="mail">E-mail:</label>
           <input type="text" id="mail" name="mail" {...register("mail")} />
+          <ErrorMessage error={errors.mail} fieldName="E-mail" />
         </div>
       </div>
 
