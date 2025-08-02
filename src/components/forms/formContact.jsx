@@ -1,68 +1,88 @@
-import "./styles/contact.css"
+import { useForm } from "react-hook-form";
+import "./styles/contact.css";
+import { ErrorMessage } from "../Error";
 const Form = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+    const onSubmits = (data) => {
+    console.log(data);
+  };
+
   return (
-      <div className="form">
-        <label htmlFor="name">Nome:</label>
-        <input type="text" id="name" name="name" />
+    <div className="form">
+      <label htmlFor="name">Nome:</label>
+      <input type="text" id="name" name="name"{...register("name", { required: true })}
+          />
+          <ErrorMessage error={errors.name} fieldName="Nome do Cliente" />
+      
 
-        <label htmlFor="enterprise">Empresa:</label>
-        <input type="text" id="enterprise" name="interprise" />
+      <label htmlFor="enterprise">Empresa:</label>
+      <input type="text" id="enterprise" name="interprise" {...register("enterprise", { required: true })}
+          />
+          <ErrorMessage error={errors.enterprise} fieldName="Empresa" />
 
-        <label htmlFor="city">Cidade:</label>
-        <input type="text" id="city" name="city" />
+      <label htmlFor="city">Cidade:</label>
+      <input type="text" id="city" name="city" {...register("city", { required: true })}
+          />
+          <ErrorMessage error={errors.city} fieldName="Cidade" />
 
-        <label htmlFor="phone">Telefone:</label>
-        <input type="number" id="phone" name="phone" />
+      <label htmlFor="phone">Telefone:</label>
+      <input type="number" id="phone" name="phone" {...register("phone", { required: true })}
+          />
+          <ErrorMessage error={errors.phone} fieldName="Telefone" />
 
-        <label htmlFor="mail">E-mail:</label>
-        <input type="text" id="mail" name="mail" />
+      <label htmlFor="mail">E-mail:</label>
+      <input type="text" id="mail" name="mail" />
 
-        <label htmlFor="department-id">Departamento</label>
-        <select name="contact-department" id="department-id">
-          <option className="firstSelect">Selecione um Departamento</option>
-          <option value="contact">Departamento para Contato</option>
-        </select>
-        <div className="howFind">
-          <h4>Como Conheceu a ESTEC ?</h4>
-          <div className="radioGrop">
-            <div>
-              <input
-                type="radio"
-                name="howIFind"
-                id="radioIndication"
-                required
-              />
-              <label htmlFor="radioIndication">Indicação</label>
-            </div>
-            <div>
-              <input type="radio" name="howIFind" id="e-mail" required />
-              <label htmlFor="e-mail">E-mail</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                name="howIFind"
-                id="radioSearchEngines"
-                required
-              />
-              <label htmlFor="radioSearchEngines">Buscadores</label>
-            </div>
+      <label htmlFor="department-id">Departamento</label>
+      <select name="contact-department" id="department-id" {...register("contactDepartment", {required: true})}>
+        <option value="" className="firstSelect">Selecione um Departamento</option>
+        <option value="contact">Departamento para Contato</option>
+      </select>
+      <ErrorMessage error={errors.contactDepartment} fieldName="Departamento"/>
+      <div className="howFind">
+        <h4>Como Conheceu a ESTEC ?</h4>
+        <div className="radioGrop">
+          <div>
+            <input type="radio" value="Indicação" id="radioIndication" {...register("howIFind", { required: true })} />
+            <label htmlFor="radioIndication">Indicação</label>
+          </div>
+          <div>
+            <input type="radio" value="E-mail" id="e-mail" {...register("howIFind", { required: true })} />
+            <label htmlFor="e-mail">E-mail</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              value="Buscadores"
+              id="radioSearchEngines"
+              required
+            />
+            <label htmlFor="radioSearchEngines">Buscadores</label>
           </div>
         </div>
-
-        <label htmlFor="contactMessage">Mensagem:</label>
-        <textarea
-          name="contactMessage"
-          id="contactMessage"
-          rows={6}
-          cols={50}
-          placeholder="Digite sue texto aqui..."
-        ></textarea>
-        <div className="btns">
-          <button className="btn-send">Enviar</button>
-          <button className="btn-clean">Limpar</button>
-        </div>
+        <ErrorMessage error={errors.howIFind} fieldName="Como conheceu a empresa" />
       </div>
+
+      <label htmlFor="contactMessage">Mensagem:</label>
+      <textarea
+        name="contactMessage"
+        id="contactMessage"
+        rows={6}
+        cols={50}
+        placeholder="Digite sue texto aqui..."
+        {...register("contactMessage", { required: true })}
+      ></textarea>
+      <ErrorMessage error={errors.contactMessage} fieldName="Mensagem" />
+      <div className="btns">
+        <button className="btn-send" onClick={() => handleSubmit(onSubmits)()} >Enviar</button>
+        <button className="btn-clean">Limpar</button>
+      </div>
+    </div>
   );
 };
 

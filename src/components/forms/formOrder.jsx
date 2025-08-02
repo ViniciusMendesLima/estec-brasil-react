@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import SearchProducts from "../../utils/SearchProducts";
 import { useState } from "react";
 import "./styles/order.css"
+import { ErrorMessage } from "../Error";
 
 const Form = () => {
   const {
@@ -91,16 +92,6 @@ const Form = () => {
 
     setItems(updatedItems);
   };
-
-  const ErrorMessage = ({ error , fieldName}) => {
-  if (!error) return null;
-
-  if (error.type === "required") {
-    return <p className="error">{fieldName} é obrigatório</p>;
-  }
-
-  return null;
-};
 
   const onSubmits = (data) => {
     console.log(data);
