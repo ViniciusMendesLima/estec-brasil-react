@@ -6,11 +6,16 @@ const Form = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm();
 
     const onSubmits = (data) => {
     console.log(data);
   };
+
+    function clean(){
+    reset();
+   }
 
   return (
     <div className="form">
@@ -80,7 +85,7 @@ const Form = () => {
       <ErrorMessage error={errors.contactMessage} fieldName="Mensagem" />
       <div className="btns">
         <button className="btn-send" onClick={() => handleSubmit(onSubmits)()} >Enviar</button>
-        <button className="btn-clean">Limpar</button>
+        <button className="btn-clean" onClick={clean}>Limpar</button>
       </div>
     </div>
   );
