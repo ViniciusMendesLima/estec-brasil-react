@@ -1,12 +1,11 @@
 import { useForm } from "react-hook-form";
-import {  useState } from "react";
+import { useState } from "react";
 import "./styles/order.css";
 import { ErrorMessage } from "../Error";
 import { Location } from "./hooks/citiesMeta";
 import { ProductsItens } from "./hooks/productsItens";
 
 const Form = () => {
-
   const {
     register,
     handleSubmit,
@@ -14,23 +13,34 @@ const Form = () => {
     formState: { errors },
     reset,
   } = useForm();
-  const [items,setItems] = useState([])
+
+  const [items, setItems] = useState([]);
 
   const cleanAll = () => {
-    reset()
-    setItems([{
-      productIndex: "",
-      description: "",
-      price: "",
-      quantity: 1,
-      total: 0,
-    }])
-  }
+    reset();
+    setItems([
+      {
+        productIndex: "",
+        description: "",
+        price: "",
+        quantity: 1,
+        total: 0,
+      },
+    ]);
+  };
 
   const onSubmits = (data) => {
-    console.log(data);
-    alert("Pedido enviada");
-    cleanAll();
+    const completeData = {
+      ...data,
+      items: items.filter((item) => item.productIndex !== ""),
+    };
+    if (completeData.items.length <= 0) {
+      alert("Insira um produto ao pedido");
+    } else {
+      console.log(completeData);
+      alert("Pedido enviada");
+      cleanAll();
+    }
   };
 
   return (
@@ -51,6 +61,7 @@ const Form = () => {
             type="text"
             id="client"
             name="client"
+            value="nome"
             {...register("client", { required: true })}
           />
           <ErrorMessage error={errors.client} fieldName="Nome do Cliente" />
@@ -62,6 +73,7 @@ const Form = () => {
             type="number"
             id="enterprise"
             name="enterprise"
+            value={"11111111111111111"}
             {...register("enterprise", { required: true })}
           />
           <ErrorMessage error={errors.enterprise} fieldName="CNPJ" />
@@ -73,17 +85,21 @@ const Form = () => {
             type="text"
             id="adress"
             name="adress"
+            value="endereço"
             {...register("adress", { required: true })}
           />
           <ErrorMessage error={errors.adress} fieldName="Endereço" />
         </div>
+
         <Location watch={watch} errors={errors} register={register} />
+
         <div>
           <label htmlFor="phone">Telefone:</label>
           <input
             type="number"
             id="phone"
             name="phone"
+            value="31999647662"
             {...register("phone", { required: true })}
           />
           <ErrorMessage error={errors.phone} fieldName="Telefone" />
@@ -96,7 +112,7 @@ const Form = () => {
         </div>
       </div>
 
-      <ProductsItens items={items} setItems={setItems}/>
+      <ProductsItens items={items} setItems={setItems} register={register} />
 
       <div className="btns">
         <button className="btn-send" onClick={() => handleSubmit(onSubmits)()}>

@@ -107,6 +107,8 @@ const ProductsItens = ({items, setItems }) => {
                   <input
                     type="number"
                     value={(item.quantity * item.price).toFixed(2)}
+                    name="totalPrice"
+                    // {...register("totalPrice", { required: true })}
                     readOnly
                   />
                 </td>
