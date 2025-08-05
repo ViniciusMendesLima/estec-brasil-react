@@ -1,13 +1,16 @@
 import { useForm } from "react-hook-form";
 import SearchProducts from "../../utils/SearchProducts";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles/order.css";
 import { ErrorMessage } from "../Error";
+import axios from "axios";
 
 const Form = () => {
+
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
     reset,
   } = useForm();
@@ -99,6 +102,35 @@ const Form = () => {
     clean();
   };
 
+  const [ufs, setUfs]= useState([])
+  const [cities, setCities]= useState([])
+  // const [selectedUf, setSelectedUf] = useState("")
+  const ufWatch = watch("state")
+
+  useEffect(()=> {
+    axios.get('https://servicodados.ibge.gov.br/api/v1/localidades/estados/').then((response) => {
+      setUfs(response.data);
+    })
+  }, [])
+
+  useEffect(()=> { 
+    if (ufWatch) {
+      axios.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${ufWatch}/municipios`).then((response) => {
+        setCities(response.data);
+      })
+    } else{
+      setCities([])
+    } 
+  }, [ufWatch])
+
+
+
+
+  // const handleSelectedUf = (event) => {
+  //   const uf = event.target.value
+  //   setSelectedUf(uf)
+  // }
+
   return (
     <div className="form">
       <label htmlFor="name">Nome do Vendedor:</label>
@@ -143,18 +175,6 @@ const Form = () => {
           />
           <ErrorMessage error={errors.adress} fieldName="Endereço" />
         </div>
-
-        <div>
-          <label htmlFor="city">Cidade:</label>
-          <input
-            type="text"
-            id="city"
-            name="city"
-            {...register("city", { required: true })}
-          />
-          <ErrorMessage error={errors.city} fieldName="Cidade" />
-        </div>
-
         <div className="uf">
           <label className="state" htmlFor="state">
             UF:
@@ -165,36 +185,22 @@ const Form = () => {
             placeholder="UF"
             {...register("state", { required: true })}
           >
-            <option></option>
-            <option>AC</option>
-            <option>AL</option>
-            <option>AP</option>
-            <option>AM</option>
-            <option>BA</option>
-            <option>CE</option>
-            <option>DF</option>
-            <option>ES</option>
-            <option>GO</option>
-            <option>MA</option>
-            <option>MT</option>
-            <option>MS</option>
-            <option>MG</option>
-            <option>PA</option>
-            <option>PB</option>
-            <option>PR</option>
-            <option>PE</option>
-            <option>PI</option>
-            <option>RJ</option>
-            <option>RN</option>
-            <option>RS</option>
-            <option>RO</option>
-            <option>RR</option>
-            <option>SC</option>
-            <option>SP</option>
-            <option>SE</option>
-            <option>TO</option>
+            <option value="">Selecione a UF</option>
+            {ufs.map(uf => (
+              <option key={uf.id} value={uf.sigla}>{uf.nome}</option>
+            ))}
           </select>
           <ErrorMessage error={errors.state} fieldName="Estado" />
+        </div>
+        <div>
+          <label htmlFor="city">Cidade:</label>
+          <select name="city" id="city" {...register("city", { required: true })}>
+            <option value="0">Selecione a cidade</option>
+            {cities.map((city) => (
+              <option key={city.id} value={city.nome}>{city.nome}</option>
+            ))}
+          </select>
+          <ErrorMessage error={errors.city} fieldName="Cidade" />
         </div>
         <div>
           <label htmlFor="phone">Telefone:</label>

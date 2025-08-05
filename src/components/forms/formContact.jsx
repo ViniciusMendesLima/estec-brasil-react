@@ -11,8 +11,8 @@ const Form = () => {
 
     const onSubmits = (data) => {
     console.log(data);
-    alert("Mensagem enviada")
-    clean()
+    // alert("Mensagem enviada")
+    // clean()
   };
 
     function clean(){
