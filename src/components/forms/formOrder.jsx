@@ -5,6 +5,7 @@ import { ErrorMessage } from "../Error";
 import { Location } from "./hooks/citiesMeta";
 import { ProductsItens } from "./hooks/productsItens";
 import { Sellers } from "../../data/Sellers";
+import { validateCNPJ } from "./mask/MaskedCNPJ";
 
 const Form = () => {
   const {
@@ -47,13 +48,19 @@ const Form = () => {
   return (
     <div className="form">
       <label htmlFor="sallerSelect">Nome do Vendedor:</label>
-      <select name="sallerSelect" id="sallerSelect" {...register("sallerSelect",{ required: true })}>
+      <select
+        name="sallerSelect"
+        id="sallerSelect"
+        {...register("sallerSelect", { required: true })}
+      >
         <option value="">Selecione um Funcionário</option>
-        {Sellers.map((s,i) => (
-          <option key={i} value={JSON.stringify({name: s.name, cpf: s.cpf})}>{s.name}</option>
+        {Sellers.map((s, i) => (
+          <option key={i} value={JSON.stringify({ name: s.name, cpf: s.cpf })}>
+            {s.name}
+          </option>
         ))}
       </select>
-        <ErrorMessage error={errors.sallerSelect} fieldName="Vendedor" />
+      <ErrorMessage error={errors.sallerSelect} fieldName="Vendedor" />
       <div className="clientAdress">
         <div>
           <label htmlFor="client">Cliente:</label>
@@ -70,15 +77,19 @@ const Form = () => {
         <div>
           <label htmlFor="enterprise">CNPJ:</label>
           <input
-            type="number"
+            type="text"
             id="enterprise"
             name="enterprise"
-            value={"11111111111111111"}
-            {...register("enterprise", { required: true })}
+            {...register("enterprise", {
+              required: true,
+              validate: (value) => {
+                const result = validateCNPJ(value);
+                return result || "CNPJ inválido";
+              },
+            })}
           />
           <ErrorMessage error={errors.enterprise} fieldName="CNPJ" />
         </div>
-
         <div>
           <label htmlFor="adress">Endereço:</label>
           <input

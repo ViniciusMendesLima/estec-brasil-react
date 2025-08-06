@@ -5,6 +5,10 @@ const ErrorMessage = ({ error, fieldName }) => {
       return <p className="error">{fieldName} é obrigatório</p>;
     }
 
+    if (error.message) {
+    return <p className="error">{error.message}</p>;
+  }
+
     return null;
   };
 
