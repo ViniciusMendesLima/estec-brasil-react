@@ -53,7 +53,7 @@ const Location = ({ watch, errors, register }) => {
       <div>
         <label htmlFor="city">Cidade:</label>
         <select name="city" id="city" {...register("city", { required: true })}>
-          <option value="0">Selecione a cidade</option>
+          <option value="">Selecione a cidade</option>
           {cities.map((city) => (
             <option key={city.id} value={city.nome}>
               {city.nome}

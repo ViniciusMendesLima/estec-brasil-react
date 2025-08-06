@@ -4,6 +4,7 @@ import "./styles/order.css";
 import { ErrorMessage } from "../Error";
 import { Location } from "./hooks/citiesMeta";
 import { ProductsItens } from "./hooks/productsItens";
+import { Sellers } from "../../data/Sellers";
 
 const Form = () => {
   const {
@@ -45,15 +46,14 @@ const Form = () => {
 
   return (
     <div className="form">
-      <label htmlFor="name">Nome do Vendedor:</label>
-      <select name="Saller-id" id="sallerSelect" {...register("sallerId")}>
-        <option>Selecione um Funcionário</option>
-        <option value="Francisco Mendes">Francisco</option>
-        <option value="Maria Pinheiro">Maria</option>
-        <option value="Eva Mendes">Eva</option>
-        <option value="Onofre Mendes">Onofre</option>
+      <label htmlFor="sallerSelect">Nome do Vendedor:</label>
+      <select name="sallerSelect" id="sallerSelect" {...register("sallerSelect",{ required: true })}>
+        <option value="">Selecione um Funcionário</option>
+        {Sellers.map((s,i) => (
+          <option key={i} value={JSON.stringify({name: s.name, cpf: s.cpf})}>{s.name}</option>
+        ))}
       </select>
-
+        <ErrorMessage error={errors.sallerSelect} fieldName="Vendedor" />
       <div className="clientAdress">
         <div>
           <label htmlFor="client">Cliente:</label>
