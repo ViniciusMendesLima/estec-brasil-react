@@ -1,6 +1,7 @@
+import { useEffect } from "react";
 import SearchProducts from "../../../utils/SearchProducts";
 
-const ProductsItens = ({items, setItems }) => {
+const ProductsItens = ({ items, setItems, register, setValue }) => {
   const products = SearchProducts();
 
   function orderTotal() {
@@ -9,6 +10,11 @@ const ProductsItens = ({items, setItems }) => {
 
     return total;
   }
+
+  const totalPrice = "Valor Total Pedido "
+  useEffect(()=> {
+    setValue(totalPrice, orderTotal().toFixed(2))
+  })
 
   const handleProductChange = (index, e) => {
     const productIndex = e.target.value;
@@ -108,7 +114,6 @@ const ProductsItens = ({items, setItems }) => {
                     type="number"
                     value={(item.quantity * item.price).toFixed(2)}
                     name="totalPrice"
-                    // {...register("totalPrice", { required: true })}
                     readOnly
                   />
                 </td>
@@ -130,7 +135,11 @@ const ProductsItens = ({items, setItems }) => {
         </button>
         <div className="selectOrderProductTotalValue">
           <label>Valor Total Pedido</label>
-          <input type="number" value={orderTotal().toFixed(2)} readOnly />
+          <input
+            type="number"
+            readOnly
+            {...register(totalPrice, { required: true })}
+          />
         </div>
       </div>
     </>

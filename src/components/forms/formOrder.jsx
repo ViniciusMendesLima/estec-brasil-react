@@ -1,22 +1,43 @@
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles/order.css";
 import { ErrorMessage } from "../Error";
 import { Location } from "./hooks/citiesMeta";
 import { ProductsItens } from "./hooks/productsItens";
 import { Sellers } from "../../data/Sellers";
-import { validateCNPJ } from "./mask/MaskedCNPJ";
+import { validateCNPJ } from "./utils/ValidadeCNPJ";
+import { formatCNPJ } from "./utils/formatCNPJ";
 
 const Form = () => {
   const {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors },
     reset,
   } = useForm();
 
+  const fieldNames= {
+    enterprise: "CNPJ",
+    client: "Nome do Cliente",
+    saller: "Vendedor",
+    phone: "Telefone",
+    mail: "E-mail",
+    adress:"Endereço"
+  };
+
   const [items, setItems] = useState([]);
+  const enterprise = "CNPJ"
+  
+  const cnpjValue = watch(enterprise);
+  useEffect(()=> {
+    const masked = formatCNPJ(cnpjValue ||"");
+    if (masked !== cnpjValue) {
+      setValue(enterprise, masked)
+    }
+  },[cnpjValue, setValue])
+
 
   const cleanAll = () => {
     reset();
@@ -51,7 +72,7 @@ const Form = () => {
       <select
         name="sallerSelect"
         id="sallerSelect"
-        {...register("sallerSelect", { required: true })}
+        {...register(fieldNames.saller, { required: true })}
       >
         <option value="">Selecione um Funcionário</option>
         {Sellers.map((s, i) => (
@@ -60,7 +81,7 @@ const Form = () => {
           </option>
         ))}
       </select>
-      <ErrorMessage error={errors.sallerSelect} fieldName="Vendedor" />
+      <ErrorMessage error={errors[fieldNames.saller]} fieldName={fieldNames.saller} />
       <div className="clientAdress">
         <div>
           <label htmlFor="client">Cliente:</label>
@@ -68,10 +89,9 @@ const Form = () => {
             type="text"
             id="client"
             name="client"
-            value="nome"
-            {...register("client", { required: true })}
+            {...register(fieldNames.client, { required: true })}
           />
-          <ErrorMessage error={errors.client} fieldName="Nome do Cliente" />
+          <ErrorMessage error={errors[fieldNames.client]} fieldName={fieldNames.client} />
         </div>
 
         <div>
@@ -80,15 +100,12 @@ const Form = () => {
             type="text"
             id="enterprise"
             name="enterprise"
-            {...register("enterprise", {
+            {...register(fieldNames.enterprise, {
               required: true,
-              validate: (value) => {
-                const result = validateCNPJ(value);
-                return result || "CNPJ inválido";
-              },
+              validate: (value) => validateCNPJ(value) || "CNPJ inválido",
             })}
           />
-          <ErrorMessage error={errors.enterprise} fieldName="CNPJ" />
+          <ErrorMessage error={errors[fieldNames.enterprise]} fieldName={fieldNames.enterprise} />
         </div>
         <div>
           <label htmlFor="adress">Endereço:</label>
@@ -96,10 +113,9 @@ const Form = () => {
             type="text"
             id="adress"
             name="adress"
-            value="endereço"
-            {...register("adress", { required: true })}
+            {...register(fieldNames.adress, { required: true })}
           />
-          <ErrorMessage error={errors.adress} fieldName="Endereço" />
+          <ErrorMessage error={errors[fieldNames.adress]} fieldName={fieldNames.adress} />
         </div>
 
         <Location watch={watch} errors={errors} register={register} />
@@ -110,20 +126,19 @@ const Form = () => {
             type="number"
             id="phone"
             name="phone"
-            value="31999647662"
-            {...register("phone", { required: true })}
+            {...register(fieldNames.phone, { required: true })}
           />
-          <ErrorMessage error={errors.phone} fieldName="Telefone" />
+          <ErrorMessage error={errors[fieldNames.phone]} fieldName={fieldNames.phone} />
         </div>
 
         <div>
           <label htmlFor="mail">E-mail:</label>
-          <input type="text" id="mail" name="mail" {...register("mail")} />
-          <ErrorMessage error={errors.mail} fieldName="E-mail" />
+          <input type="text" id="mail" name="mail" {...register(fieldNames.mail)} />
+          <ErrorMessage error={errors[fieldNames.mail]} fieldName={fieldNames.mail} />
         </div>
       </div>
 
-      <ProductsItens items={items} setItems={setItems} register={register} />
+      <ProductsItens items={items} setItems={setItems} register={register} setValue={setValue} />
 
       <div className="btns">
         <button className="btn-send" onClick={() => handleSubmit(onSubmits)()}>

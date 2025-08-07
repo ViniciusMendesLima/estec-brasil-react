@@ -5,7 +5,13 @@ import { ErrorMessage } from "../../Error";
 const Location = ({ watch, errors, register }) => {
   const [ufs, setUfs] = useState([]);
   const [cities, setCities] = useState([]);
-  const ufWatch = watch("state");
+  const state = "Estado"
+  const ufWatch = watch(state);
+
+    const fieldNames= {
+    state: "Estado",
+    city: "Cidade",
+  };
 
   useEffect(() => {
     axios
@@ -39,7 +45,7 @@ const Location = ({ watch, errors, register }) => {
           id="state"
           name="state"
           placeholder="UF"
-          {...register("state", { required: true })}
+          {...register(fieldNames.state, { required: true })}
         >
           <option value="">Selecione a UF</option>
           {ufs.map((uf) => (
@@ -48,11 +54,11 @@ const Location = ({ watch, errors, register }) => {
             </option>
           ))}
         </select>
-        <ErrorMessage error={errors.state} fieldName="Estado" />
+        <ErrorMessage error={errors[fieldNames.state]} fieldName={fieldNames.state} />
       </div>
       <div>
         <label htmlFor="city">Cidade:</label>
-        <select name="city" id="city" {...register("city", { required: true })}>
+        <select name="city" id="city" {...register(fieldNames.city, { required: true })}>
           <option value="">Selecione a cidade</option>
           {cities.map((city) => (
             <option key={city.id} value={city.nome}>
@@ -60,7 +66,7 @@ const Location = ({ watch, errors, register }) => {
             </option>
           ))}
         </select>
-        <ErrorMessage error={errors.city} fieldName="Cidade" />
+        <ErrorMessage error={errors[fieldNames.city]} fieldName={fieldNames.city} />
       </div>
     </>
   );

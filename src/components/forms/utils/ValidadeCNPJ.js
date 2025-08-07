@@ -1,5 +1,3 @@
-
-
 function validateCNPJ(cnpj) {
   cnpj = cnpj.replace(/[^\d]+/g, '');
 
