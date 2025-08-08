@@ -24,6 +24,7 @@ const ProductsItens = ({ items, setItems, register, setValue }) => {
     updatedItems[index] = {
       ...updatedItems[index],
       productIndex,
+      name: product ? product.name : "",
       description: product ? product.description : "",
       price: product ? product.price : "",
       quantity: updatedItems[index].quantity || 1,
