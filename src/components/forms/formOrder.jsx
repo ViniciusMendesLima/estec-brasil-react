@@ -171,7 +171,12 @@ const Form = () => {
             type="mail"
             id="mail"
             name="mail"
-            {...register(fieldNames.mail)}
+            {...register(fieldNames.mail,{
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "E-mail inválido"
+              }
+            })}
           />
           <ErrorMessage
             error={errors[fieldNames.mail]}
