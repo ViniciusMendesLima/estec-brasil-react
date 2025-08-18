@@ -8,6 +8,7 @@ import { Sellers } from "../../data/Sellers";
 import { validateCNPJ } from "./utils/validateCNPJ";
 import { formatCNPJ, formatPhone } from "./utils/formatMask";
 import { validatePhone } from "./utils/validatePhone";
+import { PropsContactFields } from "./utils/Props";
 
 const Form = () => {
   const {
@@ -18,17 +19,10 @@ const Form = () => {
     formState: { errors },
     reset,
   } = useForm({
-  mode: "onTouched", // valida quando o campo perde o foco ou no submit
+    mode: "onTouched", // valida quando o campo perde o foco ou no submit
   });
 
-  const fieldNames = {
-    enterprise: "CNPJ",
-    client: "Nome do Cliente",
-    saller: "Vendedor",
-    phone: "Telefone",
-    mail: "E-mail",
-    adress: "Endereço",
-  };
+  const fieldNames = PropsContactFields;
 
   const [items, setItems] = useState([]);
 
@@ -38,7 +32,7 @@ const Form = () => {
   };
 
   const applyMask = (fieldName, value, setValue) => {
-     if (!value) return;  // <-- evita validar e aplicar máscara se vazio
+    if (!value) return; // <-- evita validar e aplicar máscara se vazio
     const masked = maskMap[fieldName](value || "");
     if (masked !== value) {
       setValue(fieldName, masked, { shouldValidate: true, shouldDirty: true });
@@ -155,8 +149,7 @@ const Form = () => {
             name="phone"
             {...register(fieldNames.phone, {
               required: true,
-              validate: (value) =>  validatePhone(value) || "Telefone inválido",
-
+              validate: (value) => validatePhone(value) || "Telefone inválido",
             })}
           />
           <ErrorMessage
@@ -171,11 +164,11 @@ const Form = () => {
             type="mail"
             id="mail"
             name="mail"
-            {...register(fieldNames.mail,{
+            {...register(fieldNames.mail, {
               pattern: {
                 value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: "E-mail inválido"
-              }
+                message: "E-mail inválido",
+              },
             })}
           />
           <ErrorMessage
