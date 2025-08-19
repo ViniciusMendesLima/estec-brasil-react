@@ -14,12 +14,18 @@ A **ESCTEC Brasil Móveis S.A.** é uma empresa fictícia fabricante de móveis 
 
 ## 🧩 Tecnologias Utilizadas
 
-- **React** – Interface de usuário e componentes.
-- **JavaScript** – Lógica de interação e validações.
-- **Axios** – Requisições HTTP (se aplicável).
-- **CSS** – Estilização e responsividade.
-- **Vite** – Ferramenta de build e desenvolvimento.
+- [React](https://react.dev/) (SPA)
+- [Vite](https://vitejs.dev/) (build e dev server)
+- [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
+- [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
+- [ESLint](https://eslint.org/) (padronização de código)
 
+## Padrões de Projeto
+
+- Componentização (componentes reutilizáveis)
+- Separação por pastas: `components`, `pages`, `data`, `utils`, `validations`
+- Validação de formulários via funções utilitárias
+- Layout compartilhado (Navbar, Footer, SharedLayout)
 
 ## 📂 Estrutura do Site
 
@@ -115,7 +121,9 @@ A **ESCTEC Brasil Móveis S.A.** é uma empresa fictícia fabricante de móveis 
 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
+git clone https://github.com/ViniciusMendesLima/estec-brasil-react.git
+
+cd estec_brasil_react
 ```
 2. Instale as dependências (se aplicável):
 
