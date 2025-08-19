@@ -4,7 +4,7 @@ import "../components/styles/form.css"
 const Contact = () => {
   return (
     <section className="section">
-      <div className="content">
+      <div className="content form-page">
         <div className="namePage">
           <h1>contato</h1>
         </div>

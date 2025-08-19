@@ -35,6 +35,10 @@ th {
   width: 100%;
 }
 
+.selectOrderProduct .media-query{
+  display: none;
+}
+
 .remProduct,
 .addProduct {
   height: 30px;
@@ -68,4 +72,40 @@ th {
   font-weight: 700;
   margin-top: 10px;
   gap: 5px;
+}
+
+
+@media(max-width: 700px){
+  .OrderFormProducts table thead{
+    display: none;
+  }
+  .selectOrderProduct .media-query{
+  display: block;
+}
+
+  .selectOrderProduct select{
+  max-width: 20rem;
+}
+
+ .selectOrderProduct{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 10px;
+  }
+
+ .selectOrderProduct input[type=number]{
+    width: 20%;
+  }
+
+  .selectOrderProduct .remProduct{
+    width: 20%;
+  }
+}
+
+@media(max-width: 519px){
+  .selectOrderProductTotalValue {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

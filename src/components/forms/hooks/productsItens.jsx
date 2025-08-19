@@ -96,12 +96,15 @@ const ProductsItens = ({ items, setItems, register, setValue }) => {
                   </select>
                 </td>
                 <td>
+                  <label className="media-query">Descrição</label>
                   <input type="text" value={item.description} readOnly />
                 </td>
                 <td>
+                  <label className="media-query">Valor</label>
                   <input type="number" value={item.price} readOnly />
                 </td>
                 <td>
+                  <label className="media-query">Quantidade</label>
                   <input
                     type="number"
                     min="1"
@@ -111,6 +114,7 @@ const ProductsItens = ({ items, setItems, register, setValue }) => {
                   />
                 </td>
                 <td>
+                  <label className="media-query">Total</label>
                   <input
                     type="number"
                     value={(item.quantity * item.price).toFixed(2)}
@@ -119,6 +123,7 @@ const ProductsItens = ({ items, setItems, register, setValue }) => {
                   />
                 </td>
                 <td>
+                  <label className="media-query">Remover Produto</label>
                   <button
                     className="remProduct"
                     type="button"

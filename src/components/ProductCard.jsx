@@ -11,7 +11,7 @@ const ProductCard = ({products}) => {
             <p className="description">{product.description}</p>
             <p className="price">
               <span>R$</span>
-              {product.price}
+              {product.price.toFixed(2)}
             </p>
           </div>
         ))

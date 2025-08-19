@@ -1,11 +1,14 @@
 .footer{
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: .5rem;
     height: 3rem;
     align-items: center;
     font-size: 15px;
     border-top: solid 1px #dddcda;
     margin: 0 2rem;
+
 
 
 }
