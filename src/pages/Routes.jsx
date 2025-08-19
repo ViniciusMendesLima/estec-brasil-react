@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./Home";
 import { SharedLayout } from "../components/layout/SharedLayout"
 import { Contact } from "./Contact";
