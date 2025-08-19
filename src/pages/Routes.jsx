@@ -13,7 +13,7 @@ import { Miscellaneous } from "./Miscellaneous";
 
 const AppRoutes = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />}/>
@@ -27,7 +27,7 @@ const AppRoutes = () => {
           <Route path="/orders" element={<Orders />}/>
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
