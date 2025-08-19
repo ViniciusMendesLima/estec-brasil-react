@@ -17,14 +17,14 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />}/>
-          <Route path="/about/mission" element={<Mission />}/>
-          <Route path="/about/vision" element={<Vision />}/>
-          <Route path="/about/values" element={<Values />}/>
-          <Route path="/products/tables" element={<Tables />}/>
-          <Route path="/products/chairs" element={<Chairs />}/>
-          <Route path="/products/miscellaneous" element={<Miscellaneous />}/>
-          <Route path="/contact" element={<Contact />}/>
-          <Route path="/orders" element={<Orders />}/>
+          <Route path="about/mission" element={<Mission />}/>
+          <Route path="about/vision" element={<Vision />}/>
+          <Route path="about/values" element={<Values />}/>
+          <Route path="products/tables" element={<Tables />}/>
+          <Route path="products/chairs" element={<Chairs />}/>
+          <Route path="products/miscellaneous" element={<Miscellaneous />}/>
+          <Route path="contact" element={<Contact />}/>
+          <Route path="orders" element={<Orders />}/>
         </Route>
       </Routes>
     </HashRouter>
