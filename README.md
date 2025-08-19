@@ -10,6 +10,7 @@ A **ESCTEC Brasil Móveis S.A.** é uma empresa fictícia fabricante de móveis 
 - Navegação estruturada com cabeçalho, rodapé e menus interativos.
 - Validações de formulários via JavaScript.
 - Estilização com CSS e layout responsivo.
+
 ---
 
 ## 🧩 Tecnologias Utilizadas
@@ -42,6 +43,7 @@ A **ESCTEC Brasil Móveis S.A.** é uma empresa fictícia fabricante de móveis 
 - **Pedidos**
 
 ## 📁 Estrutura de Diretórios
+
 ```bash
 ├── public/
 │   └── vite.svg
@@ -123,14 +125,25 @@ A **ESCTEC Brasil Móveis S.A.** é uma empresa fictícia fabricante de móveis 
 ```bash
 git clone https://github.com/ViniciusMendesLima/estec-brasil-react.git
 
-cd estec_brasil_react
+cd estec-brasil-react
 ```
+
 2. Instale as dependências (se aplicável):
 
 ```bash
 npm install
 ```
-3. Inicie o projeto localmente com Vite:
+
+3. Remova o base do vite.config.js
+
+```bash
+
+   remova codigo-> base: '/estec-brasil-react/',
+
+```
+
+4. Inicie o projeto localmente com Vite:
+
 ```bash
 npm run dev
 ```
@@ -138,4 +151,3 @@ npm run dev
 ## 📝 Observações
 
 Este projeto foi realizado para fins acadêmicos e demonstra organização modular, boas práticas de React e validação de formulários.
-
